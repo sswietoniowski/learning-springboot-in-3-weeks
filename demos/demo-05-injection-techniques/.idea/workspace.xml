@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="84868a4c-a85c-42f3-b041-a2c41b5a1a68" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectId" id="2K3AYvyiODoPzSaAZO83wfDophN" />
+  <component name="ProjectViewState">
+    <option name="flattenModules" value="true" />
+    <option name="foldersAlwaysOnTop" value="false" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="show.run.dashboard.notification" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\OSL\Courses\Pearson\Spring Boot in 3 weeks [version 2]\spring-boot-in-3-weeks\demos\demo-05-injection-techniques\src\main\resources" />
+      <recent name="C:\OSL\Courses\Pearson\Spring Boot in 3 weeks [version 2]\spring-boot-in-3-weeks\demos\demo-05-injection-techniques\src\main\java\demo" />
+      <recent name="C:\OSL\Courses\Pearson\Spring Boot in 3 weeks [version 2]\spring-boot-in-3-weeks\demos\demo-05-injection-techniques\src\main\java\demo\commandlineargs" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="AppWithArgs" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="demo-05-injection-techniques" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="demo.commandlineargs.Application" />
+      <option name="PROGRAM_PARAMETERS" value="--target=windows --target=macOS --db=h2 norway oslo krone 42" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="84868a4c-a85c-42f3-b041-a2c41b5a1a68" name="Changes" comment="" />
+      <created>1673192944315</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1673192944315</updated>
+      <workItem from="1673192945198" duration="293000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
