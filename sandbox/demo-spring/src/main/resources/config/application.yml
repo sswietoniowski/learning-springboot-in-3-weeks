@@ -1,0 +1,28 @@
+db:
+  engine:
+    mysql:
+      host: localhost
+      port: 3306
+    mongodb:
+      host: localhost
+      port: 27017
+
+---
+spring:
+  config:
+    activate:
+      on-profile: development
+db:
+  engine:
+     mysql:
+       host: 255.255.255.255
+
+---
+spring:
+  config:
+    activate:
+      on-profile: production
+db:
+  engine:
+    mysql:
+      host: 192.168.0.1
