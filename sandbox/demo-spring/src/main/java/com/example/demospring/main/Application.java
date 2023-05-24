@@ -19,6 +19,11 @@ public class Application {
         var ctx = SpringApplication.run(Application.class, args);
 
         //usingBeans(ctx);
+
+        usingJpa(ctx);
+    }
+
+    private static void usingJpa(ConfigurableApplicationContext ctx) {
     }
 
     private static void usingBeans(ConfigurableApplicationContext ctx) {
