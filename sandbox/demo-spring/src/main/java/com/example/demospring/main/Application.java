@@ -5,6 +5,7 @@ import com.example.demospring.other.MyBean;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication(scanBasePackages = "com.example.demospring")
 /* Above is equivalent to:
@@ -17,6 +18,10 @@ public class Application {
     public static void main(String[] args) {
         var ctx = SpringApplication.run(Application.class, args);
 
+        usingBeans(ctx);
+    }
+
+    private static void usingBeans(ConfigurableApplicationContext ctx) {
         var bankService = ctx.getBean(BankService.class);
 
         bankService.update(100);
