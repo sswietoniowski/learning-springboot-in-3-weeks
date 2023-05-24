@@ -92,7 +92,7 @@ If your Docker Desktop uses to much memory under Windws 10 with WSL2, do the fol
 
 Try these steps:
 
-1. In C:\Users\<yourusername>, create .wslconfig file (skip if already there). 
+1. In C:\Users\<yourusername>, create `.wslconfig` file (skip if already there). 
 2. Edit the file and add the following lines:
 
 ```ini
