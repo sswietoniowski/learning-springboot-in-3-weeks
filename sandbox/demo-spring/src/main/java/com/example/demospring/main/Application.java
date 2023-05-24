@@ -4,13 +4,16 @@ import com.example.demospring.components.BankService;
 import com.example.demospring.entities.Employee;
 import com.example.demospring.other.MyBean;
 import jakarta.persistence.EntityManager;
+import jakarta.transaction.Transactional;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 @SpringBootApplication(scanBasePackages = "com.example.demospring")
+@EntityScan(basePackages = "com.example.demospring.entities")
 /* Above is equivalent to:
 @Configuration
 @EnableAutoConfiguration
@@ -23,28 +26,7 @@ public class Application {
 
         //usingBeans(ctx);
 
-        seedDatabase(ctx);
         usingJpa(ctx);
-    }
-
-    private static void seedDatabase(ConfigurableApplicationContext ctx) {
-        // seed database
-        var jdbcTemplate = ctx.getBean(JdbcTemplate.class);
-        var sql = "INSERT INTO EMPLOYEES (NAME, REGION, SALARY) VALUES (?, ?, ?)";
-        jdbcTemplate.update(sql, "John", "London", 100);
-        jdbcTemplate.update(sql, "Mary", "New York", 200);
-        jdbcTemplate.update(sql, "Bob", "London", 300);
-        jdbcTemplate.update(sql, "Susan", "New York", 400);
-
-        // seed database using JPA
-        var em = ctx.getBean(EntityManager.class);
-        var employee = new Employee();
-        employee.setName("Boris");
-        employee.setRegion("Moscow");
-        employee.setDosh(-100);
-        em.getTransaction().begin();
-        em.persist(employee);
-        em.getTransaction().commit();
     }
 
     private static void usingJpa(ConfigurableApplicationContext ctx) {

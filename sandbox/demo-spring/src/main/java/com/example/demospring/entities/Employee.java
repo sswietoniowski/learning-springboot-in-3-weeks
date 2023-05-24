@@ -10,11 +10,11 @@ import lombok.*;
 //@AllArgsConstructor
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "EMPLOYEE_ID")
 //    @Getter
 //    @Setter
-    private long employeeId;
+    private long employeeId = -1;
 
 //    @Getter
     private String name;

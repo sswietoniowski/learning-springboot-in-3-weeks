@@ -15,10 +15,6 @@ spring:
         format_sql: true
     hibernate:
       ddl-auto: create-drop
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
 logging:
   level:
     org:
@@ -41,6 +37,10 @@ spring:
   jpa:
     database-platform:
       org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
 db:
   engine:
      mysql:
