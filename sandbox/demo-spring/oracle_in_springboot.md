@@ -20,3 +20,14 @@ Maven dependencies:
 <version>23.2.0.0</version>
 </dependency>
 ```
+
+Other resources:
+
+- [Oracle Connection Pooling With Spring](https://www.baeldung.com/spring-oracle-connection-pooling),
+- [Spring Boot With H2 Database](https://www.baeldung.com/spring-boot-h2-database),
+- [Integrating Spring Boot and Spring JDBC with H2 and Starter JDBC](https://www.springboottutorial.com/spring-boot-and-spring-jdbc-with-h2).
+
+Interesting tools:
+
+- [Liquibase](https://www.liquibase.org/),
+- [Flyway](https://flywaydb.org/).
