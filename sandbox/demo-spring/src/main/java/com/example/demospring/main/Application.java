@@ -26,7 +26,7 @@ public class Application {
 
         //usingBeans(ctx);
 
-        usingJpa(ctx);
+        //usingJpa(ctx);
     }
 
     private static void usingJpa(ConfigurableApplicationContext ctx) {

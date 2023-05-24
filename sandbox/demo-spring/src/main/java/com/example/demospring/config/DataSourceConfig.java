@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 import java.sql.SQLException;
 
 @Configuration
-@Profile("production")
+@Profile("special")
 public class DataSourceConfig {
     @Value("${spring.datasource.url}")
     private String url;
@@ -40,9 +40,9 @@ public class DataSourceConfig {
             pds.setURL(url);
             pds.setUser(username);
             pds.setPassword(password);
-            pds.setMinPoolSize(Integer.valueOf(minPoolSize));
+            pds.setMinPoolSize(Integer.parseInt(minPoolSize));
             pds.setInitialPoolSize(10);
-            pds.setMaxPoolSize(Integer.valueOf(maxPoolSize));
+            pds.setMaxPoolSize(Integer.parseInt(maxPoolSize));
 
         } catch (SQLException ea) {
             System.err.println("Error connecting to the database: " + ea.getMessage());
