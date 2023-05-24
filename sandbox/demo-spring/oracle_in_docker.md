@@ -1,11 +1,15 @@
 # How to run Oracle Database in Docker container
 
 Helpful links:
+
 - [Oracle Container Registry](https://container-registry.oracle.com),
 - [How to run Oracle Database in a Docker Container using Docker Compose](https://collabnix.com/how-to-run-oracle-database-in-a-docker-container-using-docker-compose/),
 - [docker pull container-registry.oracle.com - access denied (or) Unauthorized](https://www.middlewareinventory.com/blog/docker-pull-container-registry-oracle-com-access-denied-or-unauthorized/),
 - [How to Install Oracle Database 21c on Docker](https://docs.oracle.com/en/database/oracle/oracle-database/21/deeck/oracle-database-enterprise-edition-installation-guide-docker-containers-oracle-linux.pdf) :file_folder:,
-- [Oracle by Example brandingAccess the Database Home Page in EM Database Express](https://docs.oracle.com/en/database/oracle/oracle-database/tutorial-access-em/index.html?opt-release-19c?learningpath=true&appuser=nobody&appsession=365245126555&contentid=26468&activityname=Access%20the%20Database%20Homepage%20in%20EM%20Database%20Express&eventid=6362).
+- [Oracle by Example brandingAccess the Database Home Page in EM Database Express](https://docs.oracle.com/en/database/oracle/oracle-database/tutorial-access-em/index.html?opt-release-19c?learningpath=true&appuser=nobody&appsession=365245126555&contentid=26468&activityname=Access%20the%20Database%20Homepage%20in%20EM%20Database%20Express&eventid=6362),
+- [Use VSCode with Oracle Database](https://youtu.be/u4hCAMzOTH4),
+- [How to Resolve ORA-65096: invalid common user or role name](https://logic.edchen.org/how-to-resolve-ora-65096-invalid-common-user-or-role-name/),
+- [Create JDBC Data Source or JDBC URL database connection to an Oracle Pluggable Database](https://technology.amis.nl/database/create-jdbc-data-source-or-jdbc-url-database-connection-to-an-oracle-pluggable-database/).
 
 Used commands:
 
@@ -53,6 +57,33 @@ services:
 volumes:
   oracle-data:
   oracle-backup:
+```
+
+Connecting to the Oracle database from the container terminal:
+
+```cmd
+sqlplus / as sysdba
+```
+
+To create new user in pluggable database.
+
+First connect to the database:
+
+```cmd
+sqlplus sys/Oracle_123@//localhost:1521/ORCLPDB1 as sysdba
+```
+
+Then change container to pluggable database:
+
+```sql
+ALTER SESSION SET CONTAINER=ORCLPDB1;
+```
+
+Then create new user in pluggable database and grant privileges:
+
+```sql
+CREATE USER app_user IDENTIFIED BY password;
+GRANT CONNECT, RESOURCE, DBA TO app_user; -- this is not recommended in production!
 ```
 
 Other tips & tricks:
