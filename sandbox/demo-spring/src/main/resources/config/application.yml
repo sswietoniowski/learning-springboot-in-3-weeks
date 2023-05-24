@@ -22,6 +22,10 @@ spring:
   config:
     activate:
       on-profile: production
+  datasource:
+    url: jdbc:oracle:thin:@//localhost:1521/demopdb
+    username: app_user
+    password: password
 db:
   engine:
     mysql:
