@@ -32,7 +32,7 @@ public class Employee {
     @Transient
     private int changeCount;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
             name = "EMPLOYEES_SKILLS",
             joinColumns = @JoinColumn(name = "EMPLOYEE_ID"),

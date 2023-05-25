@@ -2,6 +2,7 @@ package com.example.demospring.main;
 
 import com.example.demospring.components.BankService;
 import com.example.demospring.entities.Employee;
+import com.example.demospring.entities.EmployeeService;
 import com.example.demospring.other.MyBean;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
@@ -27,6 +28,51 @@ public class Application {
         //usingBeans(ctx);
 
         //usingJpa(ctx);
+
+        usingServices(ctx);
+    }
+
+    private static void usingServices(ConfigurableApplicationContext ctx) {
+        var employeeService = ctx.getBean(EmployeeService.class);
+
+        System.out.println("Employees (initially):");
+        for (var e : employeeService.getEmployees()) {
+            System.out.println(e);
+        }
+
+        var employee = new Employee();
+        employee.setName("Jan");
+        employee.setRegion("Warsaw");
+        employee.setDosh(10000);
+
+        employeeService.addEmployee(employee);
+
+        System.out.println("Employees (after adding a new one):");
+        for (var e : employeeService.getEmployees()) {
+            System.out.println(e);
+        }
+
+        employeeService.employeePayRise(employee.getEmployeeId(), 1000);
+
+        System.out.println("Employees (after pay rise):");
+        for (var e : employeeService.getEmployees()) {
+            System.out.println(e);
+        }
+
+        employeeService.addSkill(employee.getEmployeeId(), "Java");
+
+        System.out.println("Employees (after adding a skill):");
+        for (var e : employeeService.getEmployees()) {
+            System.out.println(e);
+        }
+
+        // TODO: fix this
+//        employeeService.deleteEmployee(employee.getEmployeeId());
+//
+//        System.out.println("Employees (after deleting):");
+//        for (var e : employeeService.getEmployees()) {
+//            System.out.println(e);
+//        }
     }
 
     private static void usingJpa(ConfigurableApplicationContext ctx) {
@@ -47,6 +93,16 @@ public class Application {
         // find entity
         var employee2 = em.find(Employee.class, 1L);
         System.out.println("Employee: " + employee2);
+
+        // update entity
+        em.getTransaction().begin();
+        employee2.setDosh(200);
+        em.getTransaction().commit();
+
+        // delete entity
+        em.getTransaction().begin();
+        em.remove(employee2);
+        em.getTransaction().commit();
 
         // using JdbcTemplate
         var jdbcTemplate = ctx.getBean(JdbcTemplate.class);
