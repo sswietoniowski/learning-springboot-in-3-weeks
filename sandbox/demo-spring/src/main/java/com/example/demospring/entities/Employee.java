@@ -3,6 +3,10 @@ package com.example.demospring.entities;
 import jakarta.persistence.*; // javax.persistence.* in Spring Boot 2.x.x
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 @Entity
 @Table(name = "EMPLOYEES")
 @Data
@@ -27,4 +31,12 @@ public class Employee {
 
     @Transient
     private int changeCount;
+
+    @ManyToMany
+    @JoinTable(
+            name = "EMPLOYEES_SKILLS",
+            joinColumns = @JoinColumn(name = "EMPLOYEE_ID"),
+            inverseJoinColumns = @JoinColumn(name = "SKILL_ID")
+    )
+    private Set<Skill> skills = Set.of();
 }
