@@ -4,6 +4,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmployeeService {
@@ -19,8 +20,12 @@ public class EmployeeService {
         return employeeRepository.getEmployees();
     }
 
-    public Employee getEmployee(long id) {
-        return employeeRepository.getEmployee(id);
+    public Optional<Employee> getEmployee(long id) {
+        var employee = employeeRepository.getEmployee(id);
+        if (employee == null) {
+            return Optional.empty();
+        }
+        return Optional.of(employee);
     }
 
     public void addEmployee(Employee employee) {

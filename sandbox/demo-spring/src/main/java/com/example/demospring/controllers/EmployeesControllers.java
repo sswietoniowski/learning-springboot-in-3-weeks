@@ -27,7 +27,7 @@ public class EmployeesControllers {
     @GetMapping(produces = "application/json")
     public ResponseEntity<Collection<Employee>> getEmployees(@RequestParam(name = "quantity", defaultValue = "2",
             required
-            = false) Optional<Integer> quantity) {
+                    = false) Optional<Integer> quantity) {
         var employees = employeeService.getEmployees().stream().limit(quantity.orElse(3)).toList(); // limiting here
         // is not a good idea, but it's just for demo
 
@@ -36,13 +36,18 @@ public class EmployeesControllers {
 
     @GetMapping(value = "{id}", produces = "application/json")
     public ResponseEntity<EmployeeDto> getEmployee(@PathVariable long id) {
-        var employee = employeeService.getEmployee(id);
+        var employee = employeeService.getEmployee(id).orElse(null);
+
+        if (employee == null) {
+            return ResponseEntity.notFound().build();
+        }
+
         var skillsAsString = employee.getSkills().stream().map(Skill::getName).reduce("",
                 (acc, skill) -> acc + skill + ", ");
         var employeeDto = new EmployeeDto(
                 employee.getEmployeeId(), employee.getName(), employee.getRegion(), employee.getDosh(), skillsAsString);
 
-        return ResponseEntity.ok(employeeDto);
+        return ResponseEntity.ok().body(employeeDto);
     }
 
     @PostMapping
