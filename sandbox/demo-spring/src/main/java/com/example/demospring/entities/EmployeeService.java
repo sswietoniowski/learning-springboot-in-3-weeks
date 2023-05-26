@@ -19,6 +19,10 @@ public class EmployeeService {
         return employeeRepository.getEmployees();
     }
 
+    public Employee getEmployee(long id) {
+        return employeeRepository.getEmployee(id);
+    }
+
     public void addEmployee(Employee employee) {
         employeeRepository.insertEmployee(employee);
     }

@@ -1,0 +1,38 @@
+GET http://localhost:8080/api/employees
+Accept: application/json
+
+<> 2023-05-26T090744.200.json
+<> 2023-05-26T090701.200.json
+
+###
+GET http://localhost:8080/api/employees/1
+Accept: application/json
+
+<> 2023-05-26T090652.200.json
+<> 2023-05-26T090627.200.json
+<> 2023-05-26T090621.200.json
+
+###
+POST http://localhost:8080/api/employees
+Content-Type: application/json
+
+{
+  "name": "Wiesław Paleta",
+  "region": "Warszawa",
+  "dosh": 0.0
+}
+
+###
+PUT http://localhost:8080/api/employees/6/addskill/Java
+
+<> 2023-05-26T090727.500.json
+
+
+###
+PUT http://localhost:8080/api/employees/6/payrise/1000.0
+
+###
+DELETE http://localhost:8080/api/employees/6
+
+<> 2023-05-26T090759.405.json
+<> 2023-05-26T090757.405.json
