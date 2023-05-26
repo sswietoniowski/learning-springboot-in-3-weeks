@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.List;
+import java.util.Collection;
 import java.util.Optional;
 
 
@@ -25,7 +25,8 @@ public class EmployeesControllers {
 
 
     @GetMapping(produces = "application/json")
-    public ResponseEntity<List<Employee>> getEmployees(@RequestParam(name = "quantity", defaultValue = "2", required
+    public ResponseEntity<Collection<Employee>> getEmployees(@RequestParam(name = "quantity", defaultValue = "2",
+            required
             = false) Optional<Integer> quantity) {
         var employees = employeeService.getEmployees().stream().limit(quantity.orElse(3)).toList(); // limiting here
         // is not a good idea, but it's just for demo

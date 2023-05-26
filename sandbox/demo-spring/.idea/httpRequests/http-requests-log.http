@@ -1,3 +1,40 @@
+POST http://localhost:8080/api/employees
+Content-Type: application/json
+Content-Length: 70
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "name": "Wiesław Paleta",
+  "region": "Warszawa",
+  "dosh": 0.0
+}
+
+<> 2023-05-26T143941.201.json
+
+###
+
+GET http://localhost:8080/api/employees
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-05-26T143927.200.json
+
+###
+
+GET http://localhost:8080/api/employees
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-05-26T143908.500.json
+
+###
+
 GET http://localhost:8080/api/employees?quantity=4
 Accept: application/json
 Connection: Keep-Alive

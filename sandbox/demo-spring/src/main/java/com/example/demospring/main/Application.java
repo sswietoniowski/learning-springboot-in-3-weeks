@@ -5,16 +5,19 @@ import com.example.demospring.entities.Employee;
 import com.example.demospring.entities.EmployeeService;
 import com.example.demospring.other.MyBean;
 import jakarta.persistence.EntityManager;
-import jakarta.transaction.Transactional;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
+import springfox.documentation.oas.annotations.EnableOpenApi;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication(scanBasePackages = "com.example.demospring")
 @EntityScan(basePackages = "com.example.demospring.entities")
+@EnableSwagger2
+@EnableOpenApi
 /* Above is equivalent to:
 @Configuration
 @EnableAutoConfiguration
