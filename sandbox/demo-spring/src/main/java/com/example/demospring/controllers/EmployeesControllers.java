@@ -24,7 +24,7 @@ public class EmployeesControllers {
     }
 
 
-    @GetMapping(produces = "application/json")
+    @GetMapping(produces = {"application/json", "application/xml"})
     public ResponseEntity<Collection<Employee>> getEmployees(@RequestParam(name = "quantity", defaultValue = "2",
             required
                     = false) Optional<Integer> quantity) {
