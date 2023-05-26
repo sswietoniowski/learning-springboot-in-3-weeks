@@ -4,10 +4,14 @@ import com.example.demospring.dtos.EmployeeDto;
 import com.example.demospring.entities.Employee;
 import com.example.demospring.entities.EmployeeService;
 import com.example.demospring.entities.Skill;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
+
 
 @RestController
 @RequestMapping("/api/employees")
@@ -21,35 +25,57 @@ public class EmployeesControllers {
 
 
     @GetMapping(produces = "application/json")
-    public List<Employee> getEmployees(@RequestParam(name="quantity", defaultValue="2", required = false) Optional<Integer> quantity) {
-        return employeeService.getEmployees().stream().limit(quantity.orElse(3)).toList(); // limiting here is not a good idea, but it's just for demo
+    public ResponseEntity<List<Employee>> getEmployees(@RequestParam(name = "quantity", defaultValue = "2", required
+            = false) Optional<Integer> quantity) {
+        var employees = employeeService.getEmployees().stream().limit(quantity.orElse(3)).toList(); // limiting here
+        // is not a good idea, but it's just for demo
+
+        return ResponseEntity.ok(employees);
     }
 
     @GetMapping(value = "{id}", produces = "application/json")
-    public EmployeeDto getEmployee(@PathVariable long id) {
+    public ResponseEntity<EmployeeDto> getEmployee(@PathVariable long id) {
         var employee = employeeService.getEmployee(id);
-        var skillsAsString = employee.getSkills().stream().map(Skill::getName).reduce("", (acc, skill) -> acc + skill + ", ");
-        return new EmployeeDto(employee.getEmployeeId(), employee.getName(), employee.getRegion(), employee.getDosh(), skillsAsString);
+        var skillsAsString = employee.getSkills().stream().map(Skill::getName).reduce("",
+                (acc, skill) -> acc + skill + ", ");
+        var employeeDto = new EmployeeDto(
+                employee.getEmployeeId(), employee.getName(), employee.getRegion(), employee.getDosh(), skillsAsString);
+
+        return ResponseEntity.ok(employeeDto);
     }
 
     @PostMapping
-    public EmployeeDto addEmployee(@RequestBody Employee employee) {
+    public ResponseEntity<EmployeeDto> addEmployee(@RequestBody Employee employee) {
         employeeService.addEmployee(employee);
-        return new EmployeeDto(employee.getEmployeeId(), employee.getName(), employee.getRegion(), employee.getDosh(), "");
+
+        var employeeDto = new EmployeeDto(employee.getEmployeeId(), employee.getName(), employee.getRegion(),
+                employee.getDosh(), "");
+
+        try {
+            return ResponseEntity.created(new URI("/api/employees/" + employee.getEmployeeId())).body(employeeDto);
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @PutMapping("{id}/addskill/{skillName}")
-    public void addSkill(@PathVariable long id, @PathVariable String skillName) {
+    public ResponseEntity<Void> addSkill(@PathVariable long id, @PathVariable String skillName) {
         employeeService.addSkill(id, skillName);
+
+        return ResponseEntity.noContent().build();
     }
 
     @PutMapping("{id}/payrise/{amount}")
-    public void employeePayRise(@PathVariable long id, @PathVariable double amount) {
+    public ResponseEntity<Void> employeePayRise(@PathVariable long id, @PathVariable double amount) {
         employeeService.employeePayRise(id, amount);
+
+        return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("{id}")
-    public void deleteEmployee(@PathVariable long id) {
+    public ResponseEntity<Void> deleteEmployee(@PathVariable long id) {
         employeeService.deleteEmployee(id);
+
+        return ResponseEntity.noContent().build();
     }
 }
