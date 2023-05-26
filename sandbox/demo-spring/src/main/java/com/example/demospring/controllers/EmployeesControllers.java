@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -22,7 +21,6 @@ public class EmployeesControllers {
     public EmployeesControllers(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
-
 
     @GetMapping(produces = {"application/json", "application/xml"})
     public ResponseEntity<Collection<Employee>> getEmployees(@RequestParam(name = "quantity", defaultValue = "2",
@@ -57,11 +55,8 @@ public class EmployeesControllers {
         var employeeDto = new EmployeeDto(employee.getEmployeeId(), employee.getName(), employee.getRegion(),
                 employee.getDosh(), "");
 
-        try {
-            return ResponseEntity.created(new URI("/api/employees/" + employee.getEmployeeId())).body(employeeDto);
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        }
+        URI uri = URI.create("/api/employees/" + employee.getEmployeeId());
+        return ResponseEntity.created(uri).body(employeeDto);
     }
 
     @PutMapping("{id}/addskill/{skillName}")
