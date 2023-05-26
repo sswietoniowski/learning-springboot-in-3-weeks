@@ -34,7 +34,9 @@ Other resources:
 - [Auto-Reload SpringBoot in IntelliJ IDEA](https://dev.to/imanuel/auto-reload-springboot-in-intellij-idea-1l65),
 - [Setting Up Swagger 2 with a Spring REST API Using Springfox](https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api),
 - [OData](https://www.odata.org/),
-- [Intro to OData with Olingo](https://www.baeldung.com/olingo).
+- [Intro to OData with Olingo](https://www.baeldung.com/olingo),
+- [Guide to Setting Up Apache Kafka Using Docker](https://www.baeldung.com/ops/kafka-docker-setup),
+- [Offset Explorer](https://kafkatool.com/download.html).
 
 Interesting tools:
 
