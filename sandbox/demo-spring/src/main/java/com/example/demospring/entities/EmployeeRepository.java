@@ -15,7 +15,12 @@ public class EmployeeRepository {
     protected EntityManager entityManager;
 
     public Employee getEmployee(long id) {
-        return entityManager.find(Employee.class, id);
+        // won't use eager fetch, so we need to do next line
+//        return entityManager.find(Employee.class, id);
+        String jpql = "SELECT e FROM Employee e WHERE e.employeeId = :id";
+        TypedQuery<Employee> query = entityManager.createQuery(jpql, Employee.class);
+        query.setParameter("id", id);
+        return query.getSingleResult();
     }
 
     public long getEmployeeCount() {

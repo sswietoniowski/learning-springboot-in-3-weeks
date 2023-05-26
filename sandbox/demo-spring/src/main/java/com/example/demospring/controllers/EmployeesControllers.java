@@ -1,7 +1,10 @@
 package com.example.demospring.controllers;
 
+import com.example.demospring.dtos.EmployeeDto;
 import com.example.demospring.entities.Employee;
 import com.example.demospring.entities.EmployeeService;
+import com.example.demospring.entities.Skill;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,8 +27,10 @@ public class EmployeesControllers {
     }
 
     @GetMapping(value = "{id}", produces = "application/json")
-    public Employee getEmployee(@PathVariable long id) {
-        return employeeService.getEmployee(id);
+    public EmployeeDto getEmployee(@PathVariable long id) {
+        var employee = employeeService.getEmployee(id);
+        var skillsAsString = employee.getSkills().stream().map(Skill::getName).reduce("", (acc, skill) -> acc + skill + ", ");
+        return new EmployeeDto(employee.getEmployeeId(), employee.getName(), employee.getRegion(), employee.getDosh(), skillsAsString);
     }
 
     @PostMapping
