@@ -11,13 +11,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
-import springfox.documentation.oas.annotations.EnableOpenApi;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication(scanBasePackages = "com.example.demospring")
 @EntityScan(basePackages = "com.example.demospring.entities")
-@EnableSwagger2
-@EnableOpenApi
+//@EnableSwagger2
+//@EnableOpenApi
 /* Above is equivalent to:
 @Configuration
 @EnableAutoConfiguration
