@@ -4,11 +4,10 @@ import com.example.demospring.dtos.EmployeeDto;
 import com.example.demospring.entities.Employee;
 import com.example.demospring.entities.EmployeeService;
 import com.example.demospring.entities.Skill;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/employees")
@@ -22,8 +21,8 @@ public class EmployeesControllers {
 
 
     @GetMapping(produces = "application/json")
-    public List<Employee> getEmployees() {
-        return employeeService.getEmployees();
+    public List<Employee> getEmployees(@RequestParam(name="quantity", defaultValue="2", required = false) Optional<Integer> quantity) {
+        return employeeService.getEmployees().stream().limit(quantity.orElse(3)).toList(); // limiting here is not a good idea, but it's just for demo
     }
 
     @GetMapping(value = "{id}", produces = "application/json")
@@ -34,8 +33,9 @@ public class EmployeesControllers {
     }
 
     @PostMapping
-    public void addEmployee(@RequestBody Employee employee) {
+    public EmployeeDto addEmployee(@RequestBody Employee employee) {
         employeeService.addEmployee(employee);
+        return new EmployeeDto(employee.getEmployeeId(), employee.getName(), employee.getRegion(), employee.getDosh(), "");
     }
 
     @PutMapping("{id}/addskill/{skillName}")

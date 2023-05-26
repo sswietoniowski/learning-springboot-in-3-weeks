@@ -1,3 +1,83 @@
+GET http://localhost:8080/api/employees?quantity=4
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-05-26T142910.200.json
+
+###
+
+GET http://localhost:8080/api/employees
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-05-26T142905.200.json
+
+###
+
+GET http://localhost:8080/api/employees/2?quantity=4
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-05-26T142824.200.json
+
+###
+
+GET http://localhost:8080/api/employees/2?quantity=2
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-05-26T142818.200.json
+
+###
+
+GET http://localhost:8080/api/employees
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-05-26T142748.200.json
+
+###
+
+GET http://localhost:8080/api/employees
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-05-26T142343.500.json
+
+###
+
+GET http://localhost:8080/api/employees
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-05-26T142136.500.json
+
+###
+
+GET http://localhost:8080/api/employees
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-05-26T142027.500.json
+
+###
+
 GET http://localhost:8080/api/employees
 Accept: application/json
 Connection: Keep-Alive

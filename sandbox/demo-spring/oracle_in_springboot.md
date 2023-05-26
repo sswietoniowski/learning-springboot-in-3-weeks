@@ -28,7 +28,9 @@ Other resources:
 - [Integrating Spring Boot and Spring JDBC with H2 and Starter JDBC](https://www.springboottutorial.com/spring-boot-and-spring-jdbc-with-h2),
 - [One-Stop Guide to Profiles with Spring Boot](https://reflectoring.io/spring-boot-profiles/),
 - [Many-To-Many Relationship in JPA](https://www.baeldung.com/jpa-many-to-many),
-- [Remove Entity with Many-to-Many Relationship in JPA](https://www.baeldung.com/jpa-remove-entity-many-to-many).
+- [Remove Entity with Many-to-Many Relationship in JPA](https://www.baeldung.com/jpa-remove-entity-many-to-many),
+- [Spring @RequestParam Annotation](https://www.baeldung.com/spring-request-param),
+- [Auto-Reload SpringBoot in IntelliJ IDEA](https://dev.to/imanuel/auto-reload-springboot-in-intellij-idea-1l65).
 
 Interesting tools:
 
