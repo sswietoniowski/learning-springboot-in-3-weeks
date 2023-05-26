@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/employees")
+@CrossOrigin(origins = "http://localhost:3000")
 public class EmployeesControllers {
     private final EmployeeService employeeService;
 
