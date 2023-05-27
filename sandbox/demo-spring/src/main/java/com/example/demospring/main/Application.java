@@ -3,6 +3,7 @@ package com.example.demospring.main;
 import com.example.demospring.components.BankService;
 import com.example.demospring.entities.Employee;
 import com.example.demospring.other.MyBean;
+import com.example.demospring.services.ClientService;
 import com.example.demospring.services.EmployeeService;
 import jakarta.persistence.EntityManager;
 import org.springframework.boot.ApplicationArguments;
@@ -30,7 +31,20 @@ public class Application {
 
         //usingJpa(ctx);
 
-        usingServices(ctx);
+        //usingServices(ctx);
+
+        usingRest(ctx);
+
+    }
+
+    private static void usingRest(ConfigurableApplicationContext ctx) {
+        var client = ctx.getBean(ClientService.class);
+
+        var employees = client.getEmployees();
+        System.out.println("Employees:");
+        for (var e : employees) {
+            System.out.println(e);
+        }
     }
 
     private static void usingServices(ConfigurableApplicationContext ctx) {
