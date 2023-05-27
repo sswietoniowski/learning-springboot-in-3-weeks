@@ -1,6 +1,8 @@
 package com.example.demospring.services;
 
-import com.example.demospring.entities.Employee;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.circuitbreaker.CircuitBreaker;
+import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -10,9 +12,12 @@ import java.util.List;
 @Service
 public class ClientService {
     private final MyClient myClient;
+    @Autowired
+    private final CircuitBreakerFactory factory;
 
-    public ClientService(MyClient myClient) {
+    public ClientService(MyClient myClient, CircuitBreakerFactory circuitBreakerFactory) {
         this.myClient = myClient;
+        this.factory = circuitBreakerFactory;
     }
 
     public List<String> getEmployees() {
@@ -28,10 +33,17 @@ public class ClientService {
         return employees;
     }
 
-    public List<Employee> getEmployeesFromFeign() {
+    public String getEmployeesFromFeign() {
         // add circuit breaker
-        
+        CircuitBreaker circuitBreaker = factory.create("circuitbreaker");
+        String result = circuitBreaker.run(
+                () -> myClient.getEmployees().toString(),
+                err -> getFallback());
 
-        return myClient.getEmployees();
+        return result;
+    }
+    
+    public String getFallback() {
+        return "something went wrong";
     }
 }

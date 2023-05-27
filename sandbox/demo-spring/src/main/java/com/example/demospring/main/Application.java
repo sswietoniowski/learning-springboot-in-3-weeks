@@ -52,9 +52,7 @@ public class Application {
         var employees2 = client.getEmployeesFromFeign();
 
         System.out.println("Employees2:");
-        for (var e : employees2) {
-            System.out.println(e);
-        }
+        System.out.println(employees2);
     }
 
     private static void usingServices(ConfigurableApplicationContext ctx) {
