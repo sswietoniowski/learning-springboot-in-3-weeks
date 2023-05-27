@@ -18,4 +18,16 @@ public class PromotionConsumerService {
         System.out.println(">>>>>>>>>>> Timestamp: " + timestamp);
         System.out.println(">>>>>>>>>>> Value: " + value);
     }
+
+    @KafkaListener(topics = "employee", groupId = "group1")
+    public void group1ConsumerB(@Header(KafkaHeaders.RECEIVED_KEY) String key,
+                                @Header(KafkaHeaders.RECEIVED_TOPIC) String topic,
+                                @Header(KafkaHeaders.RECEIVED_TIMESTAMP) String timestamp,
+                                Object value) {
+        System.out.println(">>>>>>>>>>> Group 1 Consumer B");
+        System.out.println(">>>>>>>>>>> Key: " + key);
+        System.out.println(">>>>>>>>>>> Topic: " + topic);
+        System.out.println(">>>>>>>>>>> Timestamp: " + timestamp);
+        System.out.println(">>>>>>>>>>> Value: " + value);
+    }
 }

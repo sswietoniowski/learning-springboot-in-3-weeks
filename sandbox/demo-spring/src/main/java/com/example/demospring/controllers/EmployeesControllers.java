@@ -86,6 +86,7 @@ public class EmployeesControllers {
     @PutMapping("{id}/promote")
     public ResponseEntity<Void> promoteEmployee(@PathVariable long id) {
         promotionPublisherService.sendPromotionMessage(id);
+        promotionPublisherService.sendEmployeeMessage(id);
 
         return ResponseEntity.noContent().build();
     }
