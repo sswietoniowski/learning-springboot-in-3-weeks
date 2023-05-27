@@ -35,18 +35,18 @@ services:
       - oracle-data:/opt/oracle/oradata
       - oracle-backup:/opt/oracle/backup
 
-  # Create a new container for the Spring Boot application
-  spring-boot-app:
-    build:
-      context: .
-      dockerfile: ./SpringBootApp.Dockerfile
-    ports:
-      - 8080:8080
-    depends_on:
-      - kafka
-      - oracle-db
-    environment:
-      profile: production
+#  # Create a new container for the Spring Boot application
+#  spring-boot-app:
+#    build:
+#      context: .
+#      dockerfile: ./SpringBootApp.Dockerfile
+#    ports:
+#      - 8080:8080
+#    depends_on:
+#      - kafka
+#      - oracle-db
+#    environment:
+#      profile: production
 
 volumes:
   oracle-data:
