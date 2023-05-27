@@ -6,6 +6,8 @@ import com.example.demospring.entities.Skill;
 import com.example.demospring.services.EmployeeService;
 import com.example.demospring.services.PromotionProducerService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -16,11 +18,11 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/employees")
 @CrossOrigin(origins = "http://localhost:3000")
-public class EmployeesControllers {
+public class EmployeesController {
     private final EmployeeService employeeService;
     private final PromotionProducerService promotionPublisherService;
 
-    public EmployeesControllers(EmployeeService employeeService, PromotionProducerService promotionPublisherService) {
+    public EmployeesController(EmployeeService employeeService, PromotionProducerService promotionPublisherService) {
         this.employeeService = employeeService;
         this.promotionPublisherService = promotionPublisherService;
     }
@@ -52,13 +54,17 @@ public class EmployeesControllers {
     }
 
     @PostMapping
-    public ResponseEntity<EmployeeDto> addEmployee(@RequestBody Employee employee) {
+    public ResponseEntity<EmployeeDto> addEmployee(@RequestBody Employee employee,
+                                                   @AuthenticationPrincipal OAuth2User principal) {
         employeeService.addEmployee(employee);
 
         var employeeDto = new EmployeeDto(employee.getEmployeeId(), employee.getName(), employee.getRegion(),
                 employee.getDosh(), "");
 
         URI uri = URI.create("/api/employees/" + employee.getEmployeeId());
+
+        System.out.println("principal: " + principal.getAttributes().get("name"));
+
         return ResponseEntity.created(uri).body(employeeDto);
     }
 
