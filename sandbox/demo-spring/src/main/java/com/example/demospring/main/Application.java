@@ -10,11 +10,13 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 @SpringBootApplication(scanBasePackages = "com.example.demospring")
 @EntityScan(basePackages = "com.example.demospring.entities")
+@EnableFeignClients(basePackages = "com.example.demospring.services")
 //@EnableSwagger2
 //@EnableOpenApi
 /* Above is equivalent to:
@@ -39,10 +41,18 @@ public class Application {
 
     private static void usingRest(ConfigurableApplicationContext ctx) {
         var client = ctx.getBean(ClientService.class);
+//
+//        var employees = client.getEmployees();
+//        System.out.println("Employees:");
+//        for (var e : employees) {
+//            System.out.println(e);
+//        }
 
-        var employees = client.getEmployees();
-        System.out.println("Employees:");
-        for (var e : employees) {
+
+        var employees2 = client.getEmployeesFromFeign();
+
+        System.out.println("Employees2:");
+        for (var e : employees2) {
             System.out.println(e);
         }
     }
