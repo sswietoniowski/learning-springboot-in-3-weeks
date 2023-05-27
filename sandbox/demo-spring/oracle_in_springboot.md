@@ -36,7 +36,8 @@ Other resources:
 - [OData](https://www.odata.org/),
 - [Intro to OData with Olingo](https://www.baeldung.com/olingo),
 - [Guide to Setting Up Apache Kafka Using Docker](https://www.baeldung.com/ops/kafka-docker-setup),
-- [Offset Explorer](https://kafkatool.com/download.html).
+- [Offset Explorer](https://kafkatool.com/download.html),
+- [Intro to Apache Kafka with Spring](https://www.baeldung.com/spring-kafka).
 
 Interesting tools:
 

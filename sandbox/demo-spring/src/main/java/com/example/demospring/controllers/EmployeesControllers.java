@@ -2,8 +2,9 @@ package com.example.demospring.controllers;
 
 import com.example.demospring.dtos.EmployeeDto;
 import com.example.demospring.entities.Employee;
-import com.example.demospring.entities.EmployeeService;
 import com.example.demospring.entities.Skill;
+import com.example.demospring.services.EmployeeService;
+import com.example.demospring.services.PromotionPublisherService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,9 +18,11 @@ import java.util.Optional;
 @CrossOrigin(origins = "http://localhost:3000")
 public class EmployeesControllers {
     private final EmployeeService employeeService;
+    private final PromotionPublisherService promotionPublisherService;
 
-    public EmployeesControllers(EmployeeService employeeService) {
+    public EmployeesControllers(EmployeeService employeeService, PromotionPublisherService promotionPublisherService) {
         this.employeeService = employeeService;
+        this.promotionPublisherService = promotionPublisherService;
     }
 
     @GetMapping(produces = {"application/json", "application/xml"})
@@ -76,6 +79,13 @@ public class EmployeesControllers {
     @DeleteMapping("{id}")
     public ResponseEntity<Void> deleteEmployee(@PathVariable long id) {
         employeeService.deleteEmployee(id);
+
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("{id}/promote")
+    public ResponseEntity<Void> promoteEmployee(@PathVariable long id) {
+        promotionPublisherService.sendPromotionMessage(id);
 
         return ResponseEntity.noContent().build();
     }

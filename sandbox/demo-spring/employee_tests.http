@@ -31,3 +31,6 @@ PUT http://localhost:8080/api/employees/6/payrise/1000.0
 
 ###
 DELETE http://localhost:8080/api/employees/6
+
+###
+PUT http://localhost:8080/api/employees/6/promote

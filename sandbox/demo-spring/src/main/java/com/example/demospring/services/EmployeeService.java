@@ -1,5 +1,9 @@
-package com.example.demospring.entities;
+package com.example.demospring.services;
 
+import com.example.demospring.entities.Employee;
+import com.example.demospring.entities.EmployeeRepository;
+import com.example.demospring.entities.Skill;
+import com.example.demospring.entities.SkillRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 

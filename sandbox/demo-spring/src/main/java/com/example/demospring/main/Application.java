@@ -2,8 +2,8 @@ package com.example.demospring.main;
 
 import com.example.demospring.components.BankService;
 import com.example.demospring.entities.Employee;
-import com.example.demospring.entities.EmployeeService;
 import com.example.demospring.other.MyBean;
+import com.example.demospring.services.EmployeeService;
 import jakarta.persistence.EntityManager;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.SpringApplication;

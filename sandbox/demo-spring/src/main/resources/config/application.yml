@@ -13,6 +13,10 @@ spring:
         show-sql: true
         use-sql-comments: true
         format_sql: true
+  kafka:
+    listener:
+      missing-topics-fatal: false # create topic if not exist
+    bootstrap-servers: localhost:29092
 logging:
   level:
     org:
@@ -43,8 +47,8 @@ spring:
       path: /h2-console
 db:
   engine:
-     mysql:
-       host: 255.255.255.255
+    mysql:
+      host: 255.255.255.255
 
 ---
 spring:
