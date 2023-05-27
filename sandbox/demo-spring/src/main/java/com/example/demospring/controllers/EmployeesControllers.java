@@ -4,7 +4,7 @@ import com.example.demospring.dtos.EmployeeDto;
 import com.example.demospring.entities.Employee;
 import com.example.demospring.entities.Skill;
 import com.example.demospring.services.EmployeeService;
-import com.example.demospring.services.PromotionPublisherService;
+import com.example.demospring.services.PromotionProducerService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,9 +18,9 @@ import java.util.Optional;
 @CrossOrigin(origins = "http://localhost:3000")
 public class EmployeesControllers {
     private final EmployeeService employeeService;
-    private final PromotionPublisherService promotionPublisherService;
+    private final PromotionProducerService promotionPublisherService;
 
-    public EmployeesControllers(EmployeeService employeeService, PromotionPublisherService promotionPublisherService) {
+    public EmployeesControllers(EmployeeService employeeService, PromotionProducerService promotionPublisherService) {
         this.employeeService = employeeService;
         this.promotionPublisherService = promotionPublisherService;
     }
