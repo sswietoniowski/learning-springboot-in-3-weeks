@@ -37,14 +37,16 @@ services:
 
   # Create a new container for the Spring Boot application
   spring-boot-app:
-    image: spring-boot-app
-    context: .
-    dockerfile: Dockerfile
+    build:
+      context: .
+      dockerfile: ./SpringBootApp.Dockerfile
     ports:
       - 8080:8080
     depends_on:
       - kafka
       - oracle-db
+    environment:
+      profile: production
 
 volumes:
   oracle-data:
